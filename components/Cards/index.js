@@ -22,7 +22,7 @@ function addArticles(type) {
   axios
     .get("https://lambda-times-backend.herokuapp.com/articles")
     .then(response => {
-      console.log(response.data);
+      //console.log(response.data);
       const parent = document.querySelector(".cards-container");
       let articles = [];
       if (type === "node.js") {
