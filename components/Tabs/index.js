@@ -27,5 +27,8 @@ function TabMaker(topic) {
   //add content
   tabEl.textContent = topic;
 
+  //add event listener
+  
+
   return tabEl;
 }

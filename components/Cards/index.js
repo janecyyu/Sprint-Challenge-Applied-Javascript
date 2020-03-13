@@ -45,7 +45,7 @@ function CardMaker(article) {
   imageContainer.append(image);
 
   //add class name
-  cardContainer.classList.add("card");
+  cardContainer.classList.add("card", "hide");
   title.classList.add("headline");
   authorContainer.classList.add("author");
   imageContainer.classList.add("img-container");
