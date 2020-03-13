@@ -4,9 +4,9 @@
 //lambda-times-backend.herokuapp.com/topics
 // Once the data is returned console.log it and review the structure.
 // Iterate over the topics creating a new Tab component and
-https: // add it to the DOM
+// add it to the DOM
 // under the .topics element.
-//
+https: //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 axios
@@ -26,6 +26,10 @@ function TabMaker(topic) {
 
   //add content
   tabEl.textContent = topic;
+
+  tabEl.addEventListener("click", event => {
+    addArticles(topic);
+  });
 
   return tabEl;
 }
