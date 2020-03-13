@@ -18,16 +18,31 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
-axios
-  .get("https://lambda-times-backend.herokuapp.com/articles")
-  .then(response => {
-    console.log(response.data);
-    const parent = document.querySelector(".cards-container");
-    const node = [];
-    response.data.articles.node.forEach(e => node.push(e));
-    node.forEach(e => parent.append(CardMaker(e)));
-    node.forEach(e => console.log(e.authorPhoto));
-  });
+function addArticle(type) {
+  axios
+    .get("https://lambda-times-backend.herokuapp.com/articles")
+    .then(response => {
+      //console.log(response.data.articles);
+      const parent = document.querySelector(".cards-container");
+      if (type === "node.js") {
+        articles = response.data.articles.node;
+      } else if (type === "javascript") {
+        articles = response.data.articles.javascript;
+      } else if (type === "bootstrap") {
+        articles = response.data.articles.bootstrap;
+      } else if (type === "technology") {
+        articles = response.data.articles.technology;
+      } else if (type === "jquery") {
+        articles = response.data.articles.jquery;
+      }
+      //remove all articles
+      while (parent.hasChildNodes()) {
+        parent.removeChild(parent.firstChild);
+      }
+      //add articles
+      articles.forEach(e => parent.append(CardMaker(e)));
+    });
+}
 
 function CardMaker(article) {
   //create elements
@@ -45,7 +60,7 @@ function CardMaker(article) {
   imageContainer.append(image);
 
   //add class name
-  cardContainer.classList.add("card", "hide");
+  cardContainer.classList.add("card");
   title.classList.add("headline");
   authorContainer.classList.add("author");
   imageContainer.classList.add("img-container");
@@ -54,6 +69,10 @@ function CardMaker(article) {
   title.textContent = article.headline;
   image.src = article.authorPhoto;
   name.textContent = article.authorName;
+
+  // TabMaker(article).addEventListener("click", event => {
+  //   cardContainer.classList.toggle('hide');
+  // })
 
   return cardContainer;
 }

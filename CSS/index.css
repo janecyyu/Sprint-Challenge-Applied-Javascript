@@ -216,6 +216,9 @@ body {
     width: 1200px;
   }
 }
+.hide{
+  display: none;
+}
 .cards-container .card {
   border-bottom: 1px solid lightgrey;
   display: flex;
